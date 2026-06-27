@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グローバル・メガスタジオ (Super-Indies) 財務状況分析ダッシュボード 2015年〜2025年</title>
+    <meta name="description" content="グローバルTV制作スタジオ大手の売上推移、収益性、M&A史、およびビジネスモデル分類（軸A：受託・自社IP・カタログ）を可視化する財務分析プラットフォーム。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="glow-container">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="header-content">
+            <div class="logo-area" style="max-width: 750px;">
+                <span class="badge">FINANCIAL INTELLIGENCE</span>
+                <h1>Global Mega-Studios <span class="gradient-text">(Super-Indies)</span></h1>
+                <p class="subtitle" style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Financial Intelligence Dashboard (2015-2025)</p>
+                <p class="description" style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+                    <strong>Global Mega-Studios (Super-Indies)</strong>とは、特定の放送ネットワークに属さず、買収を重ねて巨大化した独立系のグローバル映像制作・配給会社群です。本ダッシュボードは、欧米市場を牽引する主要6スタジオグループの2015年～2025年の業績推移とビジネスモデル（受託制作、自社IP投資、カタログ配給）の比率変遷、および不連続な成長をもたらしたM&A履歴を可視化しています。
+                </p>
+            </div>
+            <div class="control-panel">
+                <div class="control-group">
+                    <label for="company-selector">企業名</label>
+                    <select id="company-selector" class="custom-select">
+                        <option value="ALL">全社（合算）</option>
+                        <option value="Banijay Group">Banijay Group</option>
+                        <option value="Fremantle">Fremantle</option>
+                        <option value="ITV Studios">ITV Studios</option>
+                        <option value="BBC Studios">BBC Studios</option>
+                        <option value="Mediawan">Mediawan</option>
+                        <option value="All3Media">All3Media</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>通貨モード</label>
+                    <div class="toggle-btn-group">
+                        <button id="currency-eur" class="toggle-btn active">ユーロ (€)</button>
+                        <button id="currency-local" class="toggle-btn">現地通貨</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        <!-- KPI Cards Section -->
+        <section class="kpi-container" aria-label="主要パフォーマンス指標">
+            <div class="kpi-card" id="kpi-revenue">
+                <div class="kpi-icon">💶</div>
+                <div class="kpi-data">
+                    <span class="kpi-label" id="label-rev">2025年の売上高</span>
+                    <span class="kpi-value" id="val-rev">€14,146M</span>
+                    <span class="kpi-subtext" id="sub-rev">全社合算（ユーロ）</span>
+                </div>
+            </div>
+            <div class="kpi-card" id="kpi-margin">
+                <div class="kpi-icon">📈</div>
+                <div class="kpi-data">
+                    <span class="kpi-label">2025年平均営業利益率</span>
+                    <span class="kpi-value" id="val-margin">11.2%</span>
+                    <span class="kpi-subtext" id="sub-margin">加重平均収益性（EBIT/EBITDA）</span>
+                </div>
+            </div>
+            <div class="kpi-card" id="kpi-cagr">
+                <div class="kpi-icon">⚡</div>
+                <div class="kpi-data">
+                    <span class="kpi-label">10年売上CAGR</span>
+                    <span class="kpi-value" id="val-cagr">9.4%</span>
+                    <span class="kpi-subtext" id="sub-cagr">10年間の年平均成長率 (2015-2025)</span>
+                </div>
+            </div>
+            <div class="kpi-card" id="kpi-risk">
+                <div class="kpi-icon">🛡️</div>
+                <div class="kpi-data">
+                    <span class="kpi-label">受託・カタログ売上比率（2025年）</span>
+                    <span class="kpi-value" id="val-risk">80.5%</span>
+                    <span class="kpi-subtext" id="sub-risk">受託制作とカタログ配給の合算シェア</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Charts Area -->
+        <section class="chart-section" aria-label="財務推移グラフ">
+            <div class="chart-card large-chart">
+                <div class="chart-header">
+                    <h2>売上高推移とビジネスモデル内訳</h2>
+                    <p class="chart-desc">総収益を時系列で追跡し、ビジネスモデル（受託制作、自社IP、カタログ＆フォーマット）別に分類。</p>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="revenue-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2>収益性と利益率の推移</h2>
+                    <p class="chart-desc">営業利益（EBIT/EBITDA）の実額とマージン（％）の推移</p>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="profitability-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h2>ビジネスモデル配分（軸A）</h2>
+                    <p class="chart-desc">3つのビジネスモデル（受託制作、自社IP、カタログ＆フォーマット）から得られる収益の相対的な割合（％）。※各年度の構成比率を比較するための100%積層表示です。絶対額は上部の「売上高推移」を参照してください。</p>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="model-allocation-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- M&A Timeline & Remarks -->
+        <section class="remarks-section" aria-label="M&Aおよび組織再編イベントの注記">
+            <div class="remarks-card">
+                <div class="remarks-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h2>主なM&A・戦略注記タイムライン</h2>
+                        <p class="remarks-desc">売上急増などの財務不連続性を説明する主要なM&A・組織再編イベントの注記</p>
+                    </div>
+                    <div id="timeline-legend" class="timeline-legend" style="display: flex; gap: 0.75rem; flex-wrap: wrap;"></div>
+                </div>
+                <div class="timeline-container" id="timeline-container">
+                    <!-- タイムライン項目がJSにより動的に挿入されます -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer-bar">
+        <p>© 2026 金融インテリジェンス・チーム | 6大グローバル・メガスタジオ財務データベース（2015-2025年版）</p>
+    </footer>
+
+    <!-- スクリプトの読み込み -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
