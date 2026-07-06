@@ -1,5 +1,18 @@
-# Global Mega-Studios (Super-Indies) Financial Dashboard (2015-2025)
+# Global Mega-Studios / Super-Indies Financial Dashboard (2015–2025)
 
+An interactive financial dashboard analyzing major European and global independent production studio groups from 2015 to 2025, including Banijay, Fremantle, ITV Studios, BBC Studios, Mediawan, and All3Media.
+
+The dashboard visualizes revenue trends, EBITA / EBITDA margins, business model mix, and M&A-driven growth across leading global production groups.
+
+本ダッシュボードは、2015年〜2025年の欧米主要映像制作スタジオグループについて、Banijay、Fremantle、ITV Studios、BBC Studios、Mediawan、All3Mediaを対象に、売上、利益率、事業モデル構成、M&Aによる成長要因を可視化する財務分析ツールです。
+
+## Live Dashboard
+
+https://naohisastry.github.io/global-mega-studios-dashboard/
+
+## Keywords
+
+Super-Indies, mega studios, Banijay, Fremantle, ITV Studios, BBC Studios, Mediawan, All3Media, television production, content business, media industry, financial analysis, M&A, revenue, EBITA, EBITDA, dashboard
 欧米市場を牽引する主要6大独立系映像制作・配給スタジオグループ（Super-Indies）の、2015年〜2025年における財務パフォーマンス推移およびビジネスモデルの変遷を可視化するインタラクティブな財務分析ダッシュボードです。
 
 ---
