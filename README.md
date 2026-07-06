@@ -37,6 +37,14 @@ Super-Indies, mega studios, Banijay, Fremantle, ITV Studios, BBC Studios, Mediaw
 
 ---
 
+## Documentation / 関連ドキュメント
+
+- [Data Sources](DATA_SOURCES.md) — Source categories, financial disclosures, M&A references, and archived evidence links / 出典カテゴリ、財務開示資料、M&A関連情報、アーカイブリンクの整理
+- [Methodology](METHODOLOGY.md) — Data definitions, assumptions, estimation methods, currency treatment, and limitations / データ定義、推計方法、通貨換算、前提条件、制約事項の説明
+- [Changelog](CHANGELOG.md) — Update history and future update candidates / 更新履歴と今後の更新候補
+
+---
+
 ## 🚀 動作確認・起動方法
 特別なサーバー設定やインストール作業は不要です。
 
