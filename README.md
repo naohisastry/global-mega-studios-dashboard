@@ -69,3 +69,12 @@ Super-Indies, mega studios, Banijay, Fremantle, ITV Studios, BBC Studios, Mediaw
 ## ⚠️ 分析時の会計上の留意点
 * **利益指標の定義**: 各社の開示状況に基づき、一部スタジオは `EBITA`、その他は `EBITDA` を利益指標として採用しています。そのため、他社間の利益の絶対額の単純比較や単純合算は行わず、利益率（マージン）の中長期トレンドの比較としてご活用ください。
 * **BBC Studios of範囲**: 売上は商業部門全体である「BBC Commercial」、利益は子会社である「BBC Studios EBITDA」を採用した合成値となっています。
+
+## 📄 License / ライセンス
+
+- **Code**（HTML / CSS / JavaScript）: [MIT License](LICENSE)
+- **Content**（文章・図表・分析結果・整理済みデータ）: [CC BY 4.0](LICENSE-CONTENT.md)
+- 出典表示例 / Attribution: Naohisa Hashimoto, "global-mega-studios-dashboard", https://naohisastry.github.io/global-mega-studios-dashboard/
+- 第三者の元データの権利は各発行元に帰属します。 / Third-party source data remain the property of their original publishers.
+
+© 2026 Naohisa Hashimoto
